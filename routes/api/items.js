@@ -1,6 +1,9 @@
 const router = require('express').Router()
+const auth = require('../../middleware/auth')
 
-// Require model
+/*
+	Require Item Model
+*/
 const Item = require('../../models/Item')
 
 /*
@@ -20,7 +23,7 @@ router.get('/', (req, res) => {
 	@desc Create an item
 	@access public
 */
-router.post('/', (req, res) => {
+router.post('/', auth, (req, res) => {
 	const newItem = new Item({
 		name: req.body.name
 	})
@@ -34,7 +37,7 @@ router.post('/', (req, res) => {
 	@desc Delete an item
 	@access public
 */
-router.delete('/:id', (req, res) => {
+router.delete('/:id', auth, (req, res) => {
 	Item.findById(req.params.id)
 		.then(item => item.remove())
 		.then(() => res.json({ success: true }))

@@ -1,5 +1,8 @@
 const mongoose = require('mongoose')
 
+/*
+	Create ItemSchema
+*/
 const ItemSchema = new mongoose.Schema({
 	name: {
 		type: String,

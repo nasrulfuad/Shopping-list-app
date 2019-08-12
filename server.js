@@ -1,19 +1,35 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const config = require('config')
 const path = require('path')
 const app = express()
 const PORT = process.env.PORT || 5000
 
-const db = require('./config/keys').mongoURI
-mongoose.connect(db, { useNewUrlParser: true }).then(() => console.log('Database connected..')).catch(err => console.log(err))
+/*
+	Mongodb config is in config file
+	And connect to the mongodb
+*/
+const db = config.get('mongoURI')
+mongoose.connect(db, {
+	useNewUrlParser: true,
+	useCreateIndex: true
+}).then(() => console.log('Database connected..')).catch(err => console.log(err))
 
-app.use(bodyParser())
+
+/*
+	Enable body-parser middleware
+*/
+app.use(express.json())
+
 
 /*
 	Initializeing routes
 */
 app.use('/api/items', require('./routes/api/items'))
+app.use('/api/users', require('./routes/api/users'))
+app.use('/api/auth', require('./routes/api/auth'))
+
 
 /*
 	Serve static assets if in production
@@ -26,4 +42,8 @@ if(process.env.NODE_ENV === 'production'){
 	} )
 }
 
+
+/*
+	Listening to the port
+*/
 app.listen(PORT, _ => console.log(`Server running on port : ${PORT}`))
