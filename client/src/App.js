@@ -6,9 +6,15 @@ import ItemModal from './components/ItemModal'
 import { Container } from 'reactstrap'
 import { Provider } from 'react-redux'
 import store from './store'
+import { loadUser } from './actions/authActions'
 import './App.css'
 
 export default class App extends Component {
+
+  componentDidMount() {
+    store.dispatch(loadUser())
+  }
+
   render() {
     return (
     	<Provider store={ store }>

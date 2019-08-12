@@ -12,7 +12,7 @@ export default (state = initialState, action) => {
 			return {
 				msg: action.payload.msg,
 				status: action.payload.status,
-				id: action.payload.id,
+				id: action.payload.id
 			}
 
 		case CLEAR_ERRORS :
