@@ -17,15 +17,13 @@ export default class App extends Component {
 
   render() {
     return (
-    	<Provider store={ store }>
-	      <div>
-	        <AppNavbar />
-          <Container>
-            <ItemModal />
-            <ShoppingList />
-          </Container>
-	      </div>
-    	</Provider>
+        <Provider store={ store }>
+            <AppNavbar />
+            <Container>
+                <ItemModal />
+                <ShoppingList />
+            </Container>
+        </Provider>
     )
   }
 }
