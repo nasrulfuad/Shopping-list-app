@@ -22,10 +22,17 @@ class RegisterModal extends Component {
 	}
 
 	componentDidUpdate(prevProps) {
-		const { error } = this.props
+		const { error, isAuthenticated } = this.props
 		if(error !== prevProps.error) {
 			// Check for register error
 			(error.id === 'REGISTER_FAIL') ? this.setState({ msg: error.msg.msg }) : this.setState({ msg: null })
+		}
+
+		// If authenticated, close modal
+		if(this.state.modal) {
+			if(isAuthenticated) {
+				this.toggle()
+			}
 		}
 	}
 
