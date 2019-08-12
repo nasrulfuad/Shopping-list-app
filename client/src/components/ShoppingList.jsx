@@ -50,4 +50,5 @@ ShoppingList.propTypes = {
 const mapStateToProps = state => ({
 	item: state.item
 })
+
 export default connect(mapStateToProps, { getItems, deleteItem })(ShoppingList)
