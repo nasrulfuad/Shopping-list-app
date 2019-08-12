@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Container, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap'
+import { Container, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap'
+import RegisterModal from './auth/RegisterModal'
 
 export default class AppNavbar extends Component {
 	state = {
@@ -22,7 +23,7 @@ export default class AppNavbar extends Component {
 						<Collapse isOpen={this.state.isOpen} navbar>
 							<Nav className="ml-auto" navbar>
 								<NavItem>
-									<NavLink href="https://github.com/nasrulfuad">Github</NavLink>
+									<RegisterModal />
 								</NavItem>
 							</Nav>
 						</Collapse>
