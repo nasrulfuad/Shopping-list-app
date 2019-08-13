@@ -1,6 +1,5 @@
 /config/default.json
 yarn.lock
-README.md
 # dependencies
 /node_modules
 /.pnp
